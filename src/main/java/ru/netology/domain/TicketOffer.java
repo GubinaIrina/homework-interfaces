@@ -18,7 +18,7 @@ public class TicketOffer implements Comparable<TicketOffer> {
     private int travelTime;
 
     public boolean matches(String from, String to) {
-        if (getDepartureAirport() == from & getArrivalAirport() == to) {
+        if (getDepartureAirport().equals(from) & getArrivalAirport().equals(to)) {
             return true;
         }
         return false;
