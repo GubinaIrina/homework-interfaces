@@ -3,6 +3,8 @@ package ru.netology.domain;
 import lombok.Data;
 import ru.netology.repository.TicketRepository;
 
+import java.util.Comparator;
+
 @Data
 public class TicketManager {
     private TicketRepository repository;
@@ -17,6 +19,19 @@ public class TicketManager {
     }
 
     public TicketOffer[] findAll(String from, String to) {
+        TicketOffer[] result = new TicketOffer[0];
+        for (TicketOffer item : repository.findAll()) {
+            if (item.matches(from, to)) {
+                TicketOffer[] tmp = new TicketOffer[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = item;
+                result = tmp;
+            }
+        }
+        return result;
+    }
+
+    public TicketOffer[] findAllWithComparator(String from, String to, Comparator<TicketOffer> comparator) {
         TicketOffer[] result = new TicketOffer[0];
         for (TicketOffer item : repository.findAll()) {
             if (item.matches(from, to)) {

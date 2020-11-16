@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -91,12 +92,6 @@ public class TicketOffer implements Comparable<TicketOffer> {
                 '}';
     }
 
-    public interface Comparable<T> {
-        /** Compares this object with the specified object for order.
-         @Contract(pure=true)
-         */
-        public int compareTo(T o);
-    }
     @Override
     public int compareTo(TicketOffer o) {
         TicketOffer p = (TicketOffer) o;
