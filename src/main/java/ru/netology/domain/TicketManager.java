@@ -3,6 +3,8 @@ package ru.netology.domain;
 import lombok.Data;
 import ru.netology.repository.TicketRepository;
 
+import java.util.Arrays;
+
 @Data
 public class TicketManager {
     private TicketRepository repository;
@@ -24,6 +26,7 @@ public class TicketManager {
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = item;
                 result = tmp;
+                Arrays.sort(result);
             }
         }
         return result;

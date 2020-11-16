@@ -17,7 +17,7 @@ public class TicketOffer implements Comparable<TicketOffer> {
     private int travelTime;
 
     public boolean matches(String from, String to) {
-        if (getDepartureAirport() == from & getArrivalAirport() == to) {
+        if (getDepartureAirport().equals(from) & getArrivalAirport().equals(to)) {
             return true;
         }
         return false;
@@ -91,12 +91,6 @@ public class TicketOffer implements Comparable<TicketOffer> {
                 '}';
     }
 
-    public interface Comparable<T> {
-        /** Compares this object with the specified object for order.
-         @Contract(pure=true)
-         */
-        public int compareTo(T o);
-    }
     @Override
     public int compareTo(TicketOffer o) {
         TicketOffer p = (TicketOffer) o;
